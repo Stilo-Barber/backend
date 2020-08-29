@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "yarn install && node index.js",
+    "dev": "nodemon"
   },
   "author": "Rafael Menon <rafael13rodrigo@gmail.com>",
   "license": "MIT",
