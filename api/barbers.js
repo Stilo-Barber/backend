@@ -23,7 +23,8 @@ module.exports = (app) => {
       app
         .db("barbers")
         .insert(barbers)
-        .then((_) => res.status(200).send("Barbeiro adicionado com sucesso"))
+        .returning("id")
+        .then((id) => res.status(200).send(id))
         .catch((err) => res.status(500).send(err));
     }
   };
