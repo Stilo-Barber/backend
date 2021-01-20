@@ -4,7 +4,6 @@ module.exports = (app) => {
 
   const save = async (req, res) => {
     const schedules = req.body;
-    console.log(schedules)
 
     app
       .db("schedule")
@@ -34,7 +33,6 @@ module.exports = (app) => {
   };
 
   const get = (req, res) => {
-    console.log("get ok")
     app
       .db("schedule")
       .select("*")

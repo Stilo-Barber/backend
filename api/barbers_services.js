@@ -24,7 +24,6 @@ module.exports = (app) => {
 
       CBSIds.forEach(async (cbs) => {
         if(!ids.includes(cbs)){
-          console.log("del", cbs)
           await app
             .db("barbers_services")
             .where({ serviceId: cbs })
@@ -34,7 +33,6 @@ module.exports = (app) => {
 
       ids.forEach(async (id) => {
         if(!CBSIds.includes(id)) {
-          console.log("add", id)
           await app
             .db("barbers_services")
             .insert({

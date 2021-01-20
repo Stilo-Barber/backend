@@ -4,7 +4,8 @@ const db = require("./config/db");
 
 app.db = db;
 
-const io = require('socket.io')(server);
+
+
 
 consign()
   .include("./config/passport.js")
@@ -14,6 +15,23 @@ consign()
   .then("./config/routes.js")
   .into(app);
 
-app.listen(4000, () => {
+const server = app.listen(4000, () => {
   console.log("Backend executando...");
+});
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
+    methods: ["GET", "POST", "PUT", "DELETE"]
+  }
+});
+
+
+io.on('connection', (socket) => {
+  socket.on('apt.req', (data) => {
+    io.emit('apt.conf', data.reqValues);
+  });
+  socket.on('apt.panelres', (data) => {
+    io.emit('apt.clientres', data);
+  });
 });

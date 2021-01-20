@@ -2,7 +2,6 @@ module.exports = (app) => {
 
   const save = async (req, res) => {
     const services = { ...req.body };
-    console.log(services)
       app
         .db("services")
         .insert(services)
@@ -12,7 +11,6 @@ module.exports = (app) => {
 
   const updateService = async (req, res) => {
     const services = { ...req.body };
-    console.log("sd", services)
 
     if (req.params.id) services.id = req.params.id;
 
